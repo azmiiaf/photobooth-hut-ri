@@ -1,0 +1,18 @@
+{
+  "name": "Photobooth 17 Agustus",
+  "short_name": "Photobooth",
+  "description": "Photobooth spesial kemerdekaan Karang Taruna Darma Bakti",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f4f4",
+  "theme_color": "#9c1c20",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "192x192 512x512 any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
