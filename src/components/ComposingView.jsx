@@ -20,8 +20,9 @@ export default function ComposingView() {
         }
 
         const ctx = canvas.getContext('2d');
-        const CANVAS_WIDTH = config.width;
-        const CANVAS_HEIGHT = config.height;
+        const SCALE_FACTOR = 0.4; // Shrink to 40% for 6x faster mobile rendering
+        const CANVAS_WIDTH = config.width * SCALE_FACTOR;
+        const CANVAS_HEIGHT = config.height * SCALE_FACTOR;
         
         canvas.width = CANVAS_WIDTH;
         canvas.height = CANVAS_HEIGHT;
@@ -29,6 +30,9 @@ export default function ComposingView() {
         // 1. Draw Background (White)
         ctx.fillStyle = '#FFFFFF'; 
         ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+        // Scale the context so all original coordinates work perfectly
+        ctx.scale(SCALE_FACTOR, SCALE_FACTOR);
 
         // 2. Load and draw user photos
         const loadImg = (src) => {
@@ -86,34 +90,34 @@ export default function ComposingView() {
         // 3. Draw Overlay/Frame Template
         try {
           const frameImg = await loadImg(`/images/${selectedFrame}`);
-          ctx.drawImage(frameImg, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+          ctx.drawImage(frameImg, 0, 0, config.width, config.height);
         } catch(e) { 
           console.error('Failed to load frame image, using fallback', e);
           // Fallback text drawing if no frame image
           ctx.fillStyle = '#FFFFFF';
           ctx.textAlign = 'center';
           ctx.font = 'bold 40px "Plus Jakarta Sans", sans-serif';
-          ctx.fillText('DIRGAHAYU REPUBLIK INDONESIA', CANVAS_WIDTH / 2, 80);
+          ctx.fillText('DIRGAHAYU REPUBLIK INDONESIA', config.width / 2, 80);
           
           ctx.font = '24px "Plus Jakarta Sans", sans-serif';
-          ctx.fillText('Karang Taruna Darma Bakti', CANVAS_WIDTH / 2, CANVAS_HEIGHT - 60);
-          ctx.fillText('17 Agustus 2026', CANVAS_WIDTH / 2, CANVAS_HEIGHT - 30);
+          ctx.fillText('Karang Taruna Darma Bakti', config.width / 2, config.height - 60);
+          ctx.fillText('17 Agustus 2026', config.width / 2, config.height - 30);
     
           // Add a subtle border
           ctx.strokeStyle = '#FFFFFF';
           ctx.lineWidth = 10;
-          ctx.strokeRect(10, 10, CANVAS_WIDTH - 20, CANVAS_HEIGHT - 20);
+          ctx.strokeRect(10, 10, config.width - 20, config.height - 20);
         }
 
-        // Export
-        const finalDataUrl = canvas.toDataURL('image/png');
+        // Export as JPEG for massive performance boost on mobile
+        const finalDataUrl = canvas.toDataURL('image/jpeg', 0.9);
         if (isMounted) {
           setFinalImage(finalDataUrl);
           
           // Simulate slight delay so user sees "Memproses..."
           setTimeout(() => {
             if (isMounted) setStatus('Uploading');
-          }, 1500);
+          }, 500);
         }
       } catch (err) {
         console.error("Fatal error during composition:", err);

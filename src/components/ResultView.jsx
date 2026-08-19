@@ -17,7 +17,7 @@ export default function ResultView() {
       const autoDownload = () => {
         const link = document.createElement('a');
         link.href = finalImage;
-        link.download = `Photobooth_17an_${Date.now()}.png`;
+        link.download = `Photobooth_17an_${Date.now()}.jpg`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -29,14 +29,14 @@ export default function ResultView() {
         const blob = await res.blob();
         
         // Generate unique filename
-        const fileName = `pb_17an_${Date.now()}.png`;
+        const fileName = `pb_17an_${Date.now()}.jpg`;
 
         // Upload to Supabase
         const { data, error: uploadError } = await supabase
           .storage
           .from('photobooth')
           .upload(fileName, blob, {
-            contentType: 'image/png',
+            contentType: 'image/jpeg',
             cacheControl: '3600',
             upsert: false
           });
@@ -73,7 +73,7 @@ export default function ResultView() {
     // Trigger local download
     const link = document.createElement('a');
     link.href = finalImage;
-    link.download = `Photobooth_17an_${Date.now()}.png`;
+    link.download = `Photobooth_17an_${Date.now()}.jpg`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
