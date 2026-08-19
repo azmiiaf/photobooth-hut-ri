@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 export const useAudio = () => {
   const playSound = useCallback((soundName) => {
     try {
-      const audio = new Audio(`/src/assets/audio/${soundName}.mp3`);
+      const audio = new Audio(`/audio/${soundName}.mp3`);
       audio.play().catch(e => console.error("Audio play failed", e));
     } catch (error) {
       console.error("Error creating audio instance:", error);
