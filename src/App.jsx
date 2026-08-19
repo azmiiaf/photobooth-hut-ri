@@ -54,7 +54,7 @@ function App() {
       )}
 
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col w-full max-w-7xl mx-auto p-4 md:p-8 lg:px-12 justify-center overflow-hidden">
+      <main className="flex-1 flex flex-col w-full max-w-7xl mx-auto p-4 md:p-8 lg:px-12 justify-center overflow-y-auto hide-scrollbar">
         {status === "Idle" && (
           <div className="flex flex-col lg:flex-row items-center justify-between text-center lg:text-left gap-8 lg:gap-16 animate-in fade-in zoom-in duration-700 py-10 relative w-full mx-auto">
             
@@ -105,17 +105,17 @@ function App() {
             <div className="flex-1 relative w-full h-[400px] lg:h-[500px] flex items-center justify-center group cursor-default z-30 mt-16 lg:mt-0">
                {/* Left Frame */}
                <div className="absolute w-32 sm:w-36 lg:w-44 bg-white p-2 pb-10 rounded-md shadow-xl transform -rotate-6 -translate-x-20 lg:-translate-x-28 translate-y-8 border border-zinc-200 z-10 transition-all duration-500 ease-out group-hover:-rotate-12 group-hover:-translate-x-32 group-hover:scale-105">
-                 <img src="/images/strip1.webp" className="w-full h-auto object-contain bg-zinc-100 rounded-sm" alt="Frame 1" />
+                 <img src="/images/strip1.webp?v=2" className="w-full h-auto object-contain bg-zinc-100 rounded-sm" alt="Frame 1" />
                </div>
                
                {/* Right Frame */}
                <div className="absolute w-32 sm:w-36 lg:w-44 bg-white p-2 pb-10 rounded-md shadow-xl transform rotate-6 translate-x-20 lg:translate-x-28 translate-y-8 border border-zinc-200 z-10 transition-all duration-500 ease-out group-hover:rotate-12 group-hover:translate-x-32 group-hover:scale-105">
-                 <img src="/images/strip2.webp" className="w-full h-auto object-contain bg-zinc-100 rounded-sm" alt="Frame 2" />
+                 <img src="/images/strip2.webp?v=2" className="w-full h-auto object-contain bg-zinc-100 rounded-sm" alt="Frame 2" />
                </div>
 
                {/* Center Frame */}
                <div className="absolute w-36 sm:w-44 lg:w-56 bg-white p-2 sm:p-3 pb-12 sm:pb-16 rounded-md shadow-2xl transform -translate-y-4 border border-zinc-200 z-20 transition-all duration-500 ease-out group-hover:-translate-y-8 group-hover:scale-110">
-                 <img src="/images/strip4.webp" className="w-full h-auto object-contain bg-zinc-100 rounded-sm" alt="Frame Main" />
+                 <img src="/images/strip4.webp?v=2" className="w-full h-auto object-contain bg-zinc-100 rounded-sm" alt="Frame Main" />
                </div>
                
                {/* Center Camera Badge on Main Frame */}
@@ -136,7 +136,7 @@ function App() {
 
       <div className="hidden" aria-hidden="true">
         {['strip1.webp', 'strip2.webp', 'strip3.webp', 'strip4.webp', 'strip5.webp', 'strip6.webp', 'strip7.webp'].map((frame) => (
-          <img key={frame} src={`/images/${frame}`} alt={`preload-${frame}`} decoding="sync" />
+          <img key={frame} src={`/images/${frame}?v=2`} alt={`preload-${frame}`} decoding="sync" />
         ))}
       </div>
     </div>
