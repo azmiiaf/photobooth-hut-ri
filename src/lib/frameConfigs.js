@@ -1,5 +1,5 @@
 export const FRAME_CONFIGS = {
-  'strip1.png': {
+  'strip1.webp': {
     width: 1920, height: 5754, maxPhotos: 4,
     holes: [
       { x: 94, y: 71, width: 1732, height: 1169 },
@@ -8,7 +8,7 @@ export const FRAME_CONFIGS = {
       { x: 94, y: 3727, width: 1732, height: 1164 }
     ]
   },
-  'strip2.png': {
+  'strip2.webp': {
     width: 1920, height: 5754, maxPhotos: 4,
     holes: [
       { x: 94, y: 71, width: 1732, height: 1169 },
@@ -17,7 +17,7 @@ export const FRAME_CONFIGS = {
       { x: 94, y: 3727, width: 1732, height: 1164 }
     ]
   },
-  'strip3.png': {
+  'strip3.webp': {
     width: 1920, height: 2874, maxPhotos: 6,
     holes: [
       { x: 80, y: 119, width: 869, height: 582 },
@@ -28,7 +28,7 @@ export const FRAME_CONFIGS = {
       { x: 985, y: 1335, width: 869, height: 583 }
     ]
   },
-  'strip4.png': {
+  'strip4.webp': {
     width: 1920, height: 5754, maxPhotos: 3,
     holes: [
       { x: 117, y: 1010, width: 1687, height: 1113 },
@@ -36,7 +36,7 @@ export const FRAME_CONFIGS = {
       { x: 117, y: 3445, width: 1687, height: 1114 }
     ]
   },
-  'strip5.png': {
+  'strip5.webp': {
     width: 1920, height: 5754, maxPhotos: 3,
     holes: [
       { x: 302, y: 1331, width: 1327, height: 921 },
@@ -44,7 +44,7 @@ export const FRAME_CONFIGS = {
       { x: 302, y: 3474, width: 1327, height: 916 }
     ]
   },
-  'strip6.png': {
+  'strip6.webp': {
     width: 1920, height: 5754, maxPhotos: 3,
     holes: [
       { x: 213, y: 605, width: 1276, height: 950 },
@@ -52,7 +52,7 @@ export const FRAME_CONFIGS = {
       { x: 213, y: 3384, width: 1276, height: 939 }
     ]
   },
-  'strip7.png': {
+  'strip7.webp': {
     width: 1920, height: 5754, maxPhotos: 3,
     holes: [
       { x: 184, y: 852, width: 1563, height: 1007 },

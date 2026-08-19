@@ -5,13 +5,13 @@ import { usePhotoboothStore } from '../store/usePhotoboothStore';
 import { useAudio } from '../hooks/useAudio';
 
 const FRAMES = [
-  { id: 'strip1.png', label: 'Frame 1' },
-  { id: 'strip2.png', label: 'Frame 2' },
-  { id: 'strip3.png', label: 'Frame 3' },
-  { id: 'strip4.png', label: 'Frame 4' },
-  { id: 'strip5.png', label: 'Frame 5' },
-  { id: 'strip6.png', label: 'Frame 6' },
-  { id: 'strip7.png', label: 'Frame 7' },
+  { id: 'strip1.webp', label: 'Frame 1' },
+  { id: 'strip2.webp', label: 'Frame 2' },
+  { id: 'strip3.webp', label: 'Frame 3' },
+  { id: 'strip4.webp', label: 'Frame 4' },
+  { id: 'strip5.webp', label: 'Frame 5' },
+  { id: 'strip6.webp', label: 'Frame 6' },
+  { id: 'strip7.webp', label: 'Frame 7' },
 ];
 
 export default function FrameSelectionView() {
@@ -69,10 +69,10 @@ export default function FrameSelectionView() {
             <button
               key={frame.id}
               onClick={() => handleSelectFrame(frame.id)}
-              className={`flex-none h-full max-w-[80vw] aspect-[1/2.5] snap-center relative group overflow-hidden rounded-xl border-4 transition-all duration-300 ${
+              className={`flex-none w-[55vw] md:w-[35vw] lg:w-[25vw] h-auto aspect-[1/3] snap-center relative group overflow-hidden rounded-xl border-4 transition-all duration-300 ${
                 selectedFrame === frame.id 
-                  ? 'border-merah-merdeka shadow-lg shadow-merah-merdeka/20 scale-100 md:scale-105' 
-                  : 'border-zinc-200 hover:border-zinc-400 shadow-sm opacity-70 hover:opacity-100'
+                  ? 'border-merah-merdeka shadow-lg shadow-merah-merdeka/20 scale-100 md:scale-105 z-10' 
+                  : 'border-zinc-200 hover:border-zinc-400 shadow-sm opacity-70 hover:opacity-100 scale-95 md:scale-100'
               }`}
             >
               <div className="w-full h-full bg-zinc-100 relative p-2 flex items-center justify-center">
