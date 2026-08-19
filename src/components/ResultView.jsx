@@ -14,14 +14,7 @@ export default function ResultView() {
     const uploadImage = async () => {
       if (status !== 'Uploading' || !finalImage) return;
 
-      const autoDownload = () => {
-        const link = document.createElement('a');
-        link.href = finalImage;
-        link.download = `Photobooth_17an_${Date.now()}.jpg`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      };
+      const driveUrl = import.meta.env.VITE_DRIVE_UPLOAD_URL;
 
       try {
         // Convert Base64 DataURL to Blob
@@ -49,20 +42,34 @@ export default function ResultView() {
           .from('photobooth')
           .getPublicUrl(fileName);
 
+        // Upload to Google Drive (if URL is configured)
+        if (driveUrl) {
+          try {
+            // Split base64 string
+            const base64Data = finalImage.split(',')[1];
+            
+            // Send to Google Apps Script
+            fetch(driveUrl, {
+              method: 'POST',
+              body: JSON.stringify({
+                fileName: fileName,
+                mimeType: 'image/jpeg',
+                data: base64Data
+              })
+            }).catch(e => console.error("Drive upload error (background):", e));
+          } catch(e) {
+            console.error("Drive upload logic error:", e);
+          }
+        }
+
         setPublicUrl(publicUrlData.publicUrl);
         setUploadedFileName(fileName);
         setStatus('Completed');
-        
-        // Auto-download as backup
-        setTimeout(autoDownload, 500);
 
       } catch (err) {
         console.error("Upload failed:", err);
-        setError(`Gagal upload (${err.message || err.toString()}). Foto otomatis disimpan ke perangkat ini.`);
+        setError(`Gagal upload (${err.message || err.toString()}).`);
         setStatus('Completed'); 
-        
-        // Auto-download as backup even on failure
-        setTimeout(autoDownload, 500);
       }
     };
 
@@ -70,7 +77,7 @@ export default function ResultView() {
   }, [status, finalImage, setPublicUrl, setUploadedFileName, setStatus]);
 
   const handleDownload = () => {
-    // Trigger local download
+    // Trigger local download manually (only when user clicks)
     const link = document.createElement('a');
     link.href = finalImage;
     link.download = `Photobooth_17an_${Date.now()}.jpg`;
