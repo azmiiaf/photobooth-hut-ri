@@ -14,8 +14,6 @@ export default function ResultView() {
     const uploadImage = async () => {
       if (status !== 'Uploading' || !finalImage) return;
 
-      const driveUrl = import.meta.env.VITE_DRIVE_UPLOAD_URL;
-
       try {
         // Convert Base64 DataURL to Blob
         const res = await fetch(finalImage);
@@ -41,26 +39,6 @@ export default function ResultView() {
           .storage
           .from('photobooth')
           .getPublicUrl(fileName);
-
-        // Upload to Google Drive (if URL is configured)
-        if (driveUrl) {
-          try {
-            // Split base64 string
-            const base64Data = finalImage.split(',')[1];
-            
-            // Send to Google Apps Script
-            fetch(driveUrl, {
-              method: 'POST',
-              body: JSON.stringify({
-                fileName: fileName,
-                mimeType: 'image/jpeg',
-                data: base64Data
-              })
-            }).catch(e => console.error("Drive upload error (background):", e));
-          } catch(e) {
-            console.error("Drive upload logic error:", e);
-          }
-        }
 
         setPublicUrl(publicUrlData.publicUrl);
         setUploadedFileName(fileName);
