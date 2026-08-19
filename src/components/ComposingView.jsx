@@ -82,7 +82,7 @@ export default function ComposingView() {
       // 3. Draw Overlay/Frame Template
       try {
         // In FrameSelectionView we used selectedFrame which already includes .png (e.g. 'strip1.png')
-        const frameImg = await loadImg(`/src/assets/images/${selectedFrame}`);
+        const frameImg = await loadImg(`/images/${selectedFrame}`);
         ctx.drawImage(frameImg, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
       } catch(e) { 
         console.error('Failed to load frame image, using fallback', e);

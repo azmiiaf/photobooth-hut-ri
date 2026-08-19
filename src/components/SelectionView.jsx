@@ -123,7 +123,7 @@ export default function SelectionView() {
         {/* The Frame Container */}
         <div className="relative shadow-md overflow-hidden rounded-sm bg-white inline-block border border-zinc-100">
           <img 
-            src={`/src/assets/images/${selectedFrame}`} 
+            src={`/images/${selectedFrame}`} 
             alt="Frame Overlay" 
             className="relative z-10 w-auto h-auto max-w-full max-h-[50vh] lg:max-h-[65vh] pointer-events-none drop-shadow-sm block"
           />

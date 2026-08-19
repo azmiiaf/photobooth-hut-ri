@@ -77,7 +77,7 @@ export default function FrameSelectionView() {
             >
               <div className="w-full h-full bg-zinc-100 relative p-2 flex items-center justify-center">
                 <img 
-                  src={`/src/assets/images/${frame.id}`} 
+                  src={`/images/${frame.id}`} 
                   alt={frame.label}
                   className="w-full h-full object-contain drop-shadow-md"
                 />
